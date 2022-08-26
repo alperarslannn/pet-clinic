@@ -2,7 +2,6 @@ package com.alperArslan.springframeworkspgpetclinic.services.map;
 
 import com.alperArslan.springframeworkspgpetclinic.model.Owner;
 import com.alperArslan.springframeworkspgpetclinic.services.OwnerService;
-import com.alperArslan.springframeworkspgpetclinic.services.PetService;
 import com.alperArslan.springframeworkspgpetclinic.services.PetTypeService;
 import org.springframework.stereotype.Service;
 
@@ -10,11 +9,9 @@ import java.util.Set;
 @Service
 public class OwnerServiceMap extends AbstractMapService<Owner,Long> implements OwnerService {
     private final PetTypeService petTypeService;
-    private final PetService petService;
 
-    public OwnerServiceMap(PetTypeService petTypeService, PetService petService) {
+    public OwnerServiceMap(PetTypeService petTypeService) {
         this.petTypeService = petTypeService;
-        this.petService = petService;
     }
 
     @Override
