@@ -1,6 +1,7 @@
 package com.alperArslan.springframeworkspgpetclinic.services.map;
 
 import com.alperArslan.springframeworkspgpetclinic.model.BaseEntity;
+import org.springframework.context.annotation.Profile;
 
 import java.util.*;
 
