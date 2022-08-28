@@ -27,11 +27,14 @@ public class Owner extends Person{
     private String telephone;
 
     @Builder
-    public Owner(String firstName, String lastName, Set<Pet> pets, String address, String city, String telephone) {
+    public Owner(String firstName, String lastName, String address, String city, String telephone) {
         super(firstName, lastName);
-        this.pets = pets;
         this.address = address;
         this.city = city;
         this.telephone = telephone;
+    }
+
+    public String toString() {
+        return "Owner(address=" + this.getAddress() + ", city=" + this.getCity() + ", telephone=" + this.getTelephone() + ")";
     }
 }

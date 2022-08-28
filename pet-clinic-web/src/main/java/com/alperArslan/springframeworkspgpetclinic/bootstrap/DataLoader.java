@@ -6,7 +6,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.HashSet;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -59,11 +58,12 @@ public class DataLoader implements CommandLineRunner {
         radiology.setDescription("Dentistry");
         Speciality savedDentistry = specialiyService.save(dentistry);
 
-        Owner owner1 = Owner.builder().firstName("Michael").lastName("Weston").address("123 Brickrael").city("Miami").telephone("123123124").pets(new HashSet<>()).build();
+        Owner owner1 = Owner.builder().firstName("Michael").lastName("Weston").address("123 Brickrael").city("Miami").telephone("123123124").build();
 
-        Pet mikesPet = Pet.builder().petType(savedDogPetType).owner(owner1).birthDate(LocalDate.now()).name("Rosco").build();
+        Pet mikesPet = Pet.builder().petType(savedDogPetType).birthDate(LocalDate.now()).name("Rosco").build();
+        mikesPet.setOwner(owner1);
 
-        owner1.getPets().add(mikesPet);
+        System.out.println(owner1.getPets());
 
         ownerService.save(owner1);
 
