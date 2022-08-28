@@ -1,7 +1,6 @@
 package com.alperArslan.springframeworkspgpetclinic.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -9,6 +8,8 @@ import java.util.Set;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "owners")
 public class Owner extends Person{
@@ -24,4 +25,13 @@ public class Owner extends Person{
 
     @Column(name = "telephone")
     private String telephone;
+
+    @Builder
+    public Owner(String firstName, String lastName, Set<Pet> pets, String address, String city, String telephone) {
+        super(firstName, lastName);
+        this.pets = pets;
+        this.address = address;
+        this.city = city;
+        this.telephone = telephone;
+    }
 }
