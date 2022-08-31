@@ -2,6 +2,7 @@ package com.alperArslan.springframeworkspgpetclinic.services.map;
 
 import com.alperArslan.springframeworkspgpetclinic.model.Owner;
 import com.alperArslan.springframeworkspgpetclinic.services.OwnerService;
+import com.alperArslan.springframeworkspgpetclinic.services.PetService;
 import com.alperArslan.springframeworkspgpetclinic.services.PetTypeService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
@@ -9,11 +10,13 @@ import org.springframework.stereotype.Service;
 import java.util.Set;
 @Service
 @Profile({"default","map"})
-public class OwnerServiceMap extends AbstractMapService<Owner,Long> implements OwnerService {
+public class OwnerMapService extends AbstractMapService<Owner,Long> implements OwnerService {
     private final PetTypeService petTypeService;
+    private final PetService petService;
 
-    public OwnerServiceMap(PetTypeService petTypeService) {
+    public OwnerMapService(PetTypeService petTypeService, PetService petService) {
         this.petTypeService = petTypeService;
+        this.petService = petService;
     }
 
     @Override
@@ -37,6 +40,9 @@ public class OwnerServiceMap extends AbstractMapService<Owner,Long> implements O
                     } else {
                         throw new RuntimeException("Pet type is required.");
                     }
+
+                   petService.save(pet);
+
                 });
             }
             return super.save(object);
@@ -57,6 +63,7 @@ public class OwnerServiceMap extends AbstractMapService<Owner,Long> implements O
 
     @Override
     public Owner findByLastName(String lastName) {
-        return null;
+        return this.findAll().stream().filter(owner -> owner.getLastName().equalsIgnoreCase(lastName)).findFirst().orElse(null);
+
     }
 }
