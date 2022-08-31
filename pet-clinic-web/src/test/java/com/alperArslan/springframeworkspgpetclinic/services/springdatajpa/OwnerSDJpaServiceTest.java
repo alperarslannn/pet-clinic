@@ -84,7 +84,7 @@ class OwnerSDJpaServiceTest {
         // these methods do not return anything. Thus, verify is used.
         service.delete(returnOwner);
 
-        //defaul is 1 you don't need to state it normally.
+        //default is 1 you don't need to specify it normally.
         verify(ownerRepository,times(1)).delete(any()); //verifies delete method is called one time.
 
     }
