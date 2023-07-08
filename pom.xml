@@ -14,7 +14,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>com.alperArslan</groupId>
+	<groupId>com.alperarslan</groupId>
 	<artifactId>springframework-sfg-pet-clinic</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
