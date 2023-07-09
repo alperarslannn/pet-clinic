@@ -57,4 +57,6 @@ public class OwnerSDJpaService implements OwnerService {
     public List<Owner> findAllByLastNameLike(String lastName) {
         return ownerRepository.findAllByLastNameLikeIgnoreCase(lastName);
     }
+
+
 }
